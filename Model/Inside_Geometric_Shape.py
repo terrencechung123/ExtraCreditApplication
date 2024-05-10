@@ -27,14 +27,14 @@ class Inside_Geometric_Shape: #Rectangle
         if not isinstance(line_color, str):
             raise TypeError("Inside_Geometric_Shape.py __init__ line_color - line color must be a valid string.")
         if line_color.lower() not in valid_colors:
-            raise ValueError("Inside_Geometric_Shape.py __init__ line_color - line color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple)")
+            raise ValueError("Inside_Geometric_Shape.py __init__ line_color - line color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
 
 
         # FILL_COLOR EXCEPTIONS
         if not isinstance(fill_color, str):
             raise TypeError("Inside_Geometric_Shape.py __init__ fill_color - fill color must be a valid string.")
         if fill_color.lower() not in valid_colors:
-            raise ValueError("Inside_Geometric_Shape.py __init__ fill_color - fill color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple)")
+            raise ValueError("Inside_Geometric_Shape.py __init__ fill_color - fill color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
 
 
         # INSTANCE VARIABLES
@@ -58,19 +58,39 @@ class Inside_Geometric_Shape: #Rectangle
         return self.__fill_color
 
     def set_length(self, length):
-        pass
+        if not isinstance(length, int) and not isinstance(length, float):
+            raise TypeError("Inside_Geometric_Shape.py set_length length - length must be a valid integer or float.")
+        if length <= 0:
+            raise ValueError("Inside_Geometric_Shape.py set_length length - length must be greater than zero.")
+        self.__length = length
 
     def set_height(self, height):
-        pass
+        if not isinstance(height, int) and not isinstance(height, float):
+            raise TypeError("Inside_Geometric_Shape.py set_height height - height must be a valid integer or float.")
+        if height <= 0:
+            raise ValueError("Inside_Geometric_Shape.py set_height height - height must be greater than zero.")
+        self.__height = height
 
     def set_line_color(self, line_color):
-        pass
+        valid_colors = ("red", "white", "blue", "orange", "white", "black", "green", "yellow", "purple")
+        if not isinstance(line_color, str):
+            raise TypeError("Inside_Geometric_Shape.py set_line_color line_color - line color must be a valid string.")
+        if line_color.lower() not in valid_colors:
+            raise ValueError("Inside_Geometric_Shape.py set_line_color line_color - line color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
+        self.__line_color = line_color
 
     def set_fill_color(self, fill_color):
-        pass
+        valid_colors = ("red", "white", "blue", "orange", "white", "black", "green", "yellow", "purple")
+        if not isinstance(fill_color, str):
+            raise TypeError("Inside_Geometric_Shape.py set_fill_color fill_color - fill color must be a valid string.")
+        if fill_color.lower() not in valid_colors:
+            raise ValueError("Inside_Geometric_Shape.py set_fill_color fill_color - fill color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
+        self.__fill_color = fill_color
+
 
     def area(self):
-        pass
+        return self.__height * self.__length
+
 
     def perimeter(self):
-        pass
+        return (self.__height * 2) + (self.__length * 2)
