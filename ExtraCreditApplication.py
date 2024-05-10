@@ -10,7 +10,7 @@ from View import ApplicationView
 
 # FUNCTIONS
 
-def kinetic_energy_application():
+def application():
     model = Shit()
     # view = KineticEnergyCalculatorView()
     # controller = KineticEnergyCalculatorController(model, view)
