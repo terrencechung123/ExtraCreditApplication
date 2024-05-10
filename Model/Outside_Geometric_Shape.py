@@ -71,8 +71,8 @@ class Outside_Geometric_Shape:
 
 
     def area(self):
-        return Math.PI * (radius ** 2)
+        return Math.PI * (self.__radius ** 2)
 
 
     def perimeter(self):
-        return 2 * Math.PI * radius
+        return 2 * Math.PI * self.__radius
