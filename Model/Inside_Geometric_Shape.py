@@ -9,14 +9,14 @@ class Inside_Geometric_Shape: #Rectangle
 
 
         # LENGTH EXCEPTIONS
-        if not isinstance(length, int) and not isinstance(length, float):
+        if not type(length) is not int and not type(length) is not float:
             raise TypeError("Inside_Geometric_Shape.py __init__ length - length must be a valid integer or float.")
         if length <= 0:
             raise ValueError("Inside_Geometric_Shape.py __init__ length - length must be greater than zero.")
 
 
         # HEIGHT EXCEPTIONS
-        if not isinstance(height, int) and not isinstance(height, float):
+        if not type(height) is not int and not type(height) is not float:
             raise TypeError("Inside_Geometric_Shape.py __init__ height - height must be a valid integer or float.")
         if height <= 0:
             raise ValueError("Inside_Geometric_Shape.py __init__ height - height must be greater than zero.")
@@ -24,14 +24,14 @@ class Inside_Geometric_Shape: #Rectangle
 
         valid_colors = ("red", "white", "blue", "orange", "white", "black", "green", "yellow", "purple")
         # LINE_COLOR EXCEPTIONS
-        if not isinstance(line_color, str):
+        if type(line_color) is not str:
             raise TypeError("Inside_Geometric_Shape.py __init__ line_color - line color must be a valid string.")
         if line_color.lower() not in valid_colors:
             raise ValueError("Inside_Geometric_Shape.py __init__ line_color - line color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
 
 
         # FILL_COLOR EXCEPTIONS
-        if not isinstance(fill_color, str):
+        if type(fill_color) is not str:
             raise TypeError("Inside_Geometric_Shape.py __init__ fill_color - fill color must be a valid string.")
         if fill_color.lower() not in valid_colors:
             raise ValueError("Inside_Geometric_Shape.py __init__ fill_color - fill color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
@@ -58,14 +58,14 @@ class Inside_Geometric_Shape: #Rectangle
         return self.__fill_color
 
     def set_length(self, length):
-        if not isinstance(length, int) and not isinstance(length, float):
+        if not type(length) is not int and not type(length) is not float:
             raise TypeError("Inside_Geometric_Shape.py set_length length - length must be a valid integer or float.")
         if length <= 0:
             raise ValueError("Inside_Geometric_Shape.py set_length length - length must be greater than zero.")
         self.__length = length
 
     def set_height(self, height):
-        if not isinstance(height, int) and not isinstance(height, float):
+        if not type(height) is not int and not type(height) is not float:
             raise TypeError("Inside_Geometric_Shape.py set_height height - height must be a valid integer or float.")
         if height <= 0:
             raise ValueError("Inside_Geometric_Shape.py set_height height - height must be greater than zero.")
@@ -73,7 +73,7 @@ class Inside_Geometric_Shape: #Rectangle
 
     def set_line_color(self, line_color):
         valid_colors = ("red", "white", "blue", "orange", "white", "black", "green", "yellow", "purple")
-        if not isinstance(line_color, str):
+        if type(line_color) is not str:
             raise TypeError("Inside_Geometric_Shape.py set_line_color line_color - line color must be a valid string.")
         if line_color.lower() not in valid_colors:
             raise ValueError("Inside_Geometric_Shape.py set_line_color line_color - line color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
@@ -81,7 +81,7 @@ class Inside_Geometric_Shape: #Rectangle
 
     def set_fill_color(self, fill_color):
         valid_colors = ("red", "white", "blue", "orange", "white", "black", "green", "yellow", "purple")
-        if not isinstance(fill_color, str):
+        if type(fill_color) is not str:
             raise TypeError("Inside_Geometric_Shape.py set_fill_color fill_color - fill color must be a valid string.")
         if fill_color.lower() not in valid_colors:
             raise ValueError("Inside_Geometric_Shape.py set_fill_color fill_color - fill color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")

@@ -7,20 +7,20 @@ class Outside_Geometric_Shape:
     # CONSTRUCTOR
     def __init__(self, radius, line_color, fill_color):
         # RADIUS EXCEPTIONS
-        if not isinstance(radius, int) and not isinstance(radius, float):
+        if type(radius) is not int and type(radius) is not float:
             raise TypeError("Outside_Geometric_Shape.py __init__ radius - radius must be a valid integer or float.")
         if radius <= 0:
             raise ValueError("Outside_Geometric_Shape.py __init__ radius - radius must be greater than zero.")
 
         valid_colors = ("red", "white", "blue", "orange", "white", "black", "green", "yellow", "purple")
         # LINE_COLOR EXCEPTIONS
-        if not isinstance(line_color, str):
+        if type(line_color) is not str:
             raise TypeError("Outside_Geometric_Shape.py __init__ line_color - line color must be a valid string.")
         if line_color.lower() not in valid_colors:
             raise ValueError("Outside_Geometric_Shape.py __init__ line_color - line color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
 
         # FILL_COLOR EXCEPTIONS
-        if not isinstance(fill_color, str):
+        if type(fill_color) is not str:
             raise TypeError("Outside_Geometric_Shape.py __init__ fill_color - fill color must be a valid string.")
         if fill_color.lower() not in valid_colors:
             raise ValueError("Outside_Geometric_Shape.py __init__ fill_color - fill color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
@@ -45,7 +45,7 @@ class Outside_Geometric_Shape:
 
 
     def set_radius(self, radius):
-        if not isinstance(radius, int) and not isinstance(radius, float):
+        if type(radius) is not int and type(radius) is not float:
             raise TypeError("Outside_Geometric_Shape.py set_radius radius - radius must be a valid integer or float.")
         if radius <= 0:
             raise ValueError("Outside_Geometric_Shape.py set_radius radius - radius must be greater than zero.")
@@ -54,7 +54,7 @@ class Outside_Geometric_Shape:
 
     def set_line_color(self, line_color):
         valid_colors = ("red", "white", "blue", "orange", "white", "black", "green", "yellow", "purple")
-        if not isinstance(line_color, str):
+        if type(line_color) is not str:
             raise TypeError("Outside_Geometric_Shape.py set_line_color line_color - line color must be a valid string.")
         if line_color.lower() not in valid_colors:
             raise ValueError("Outside_Geometric_Shape.py set_line_color line_color - line color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
@@ -63,7 +63,7 @@ class Outside_Geometric_Shape:
 
     def set_fill_color(self, fill_color):
         valid_colors = ("red", "white", "blue", "orange", "white", "black", "green", "yellow", "purple")
-        if not isinstance(fill_color, str):
+        if type(line_color) is not str:
             raise TypeError("Outside_Geometric_Shape.py set_fill_color fill_color - fill color must be a valid string.")
         if fill_color.lower() not in valid_colors:
             raise ValueError("Outside_Geometric_Shape.py set_fill_color fill_color - fill color must be a valid color (Red, White, Blue, Orange, White, Black, Green, Yellow, Purple).")
