@@ -30,32 +30,48 @@ class ApplicationView:
     """
     # INSTANCE METHODS
 
-    # File Menu 
-    def edit_outside_shape_radius(self):
-        pass
-    def edit_outside_shape_line_color(self):
-        pass
-    def edit_outside_shape_fill_color(self):
-        pass
-    def edit_inside_shape_length(self):
-        pass
-    def edit_inside_shape_height(self):
-        pass
-    def edit_inside_shape_line_color(self):
-        pass
-    def edit_inside_shape_fill_color(self):
-        pass
+    # File Menu
+    # def edit_outside_shape_radius(self):
+    #     outside_radius = tkinter.simpledialog.askfloat("Edit Outside Radius", "Enter New Outside Radius:")
+    #     return outside_radius
+    # def edit_outside_shape_line_color(self):
+    #     outside_line_color = tkinter.simpledialog.askstring("Edit Outside Line Color","Enter New Outside Line Color:")
+    #     return outside_line_color
+    # def edit_outside_shape_fill_color(self):
+    #     outside_fill_color = tkinter.simpledialog.askstring("Edit Outside Fill Color", "Enter New Outside Fill Color")
+    #     return outside_fill_color
+    # def edit_inside_shape_length(self):
+    #     inside_length = tkinter.simpledialog.askfloat("Edit Inside Shape Length", "Enter New Insidem Length:")
+    #     return inside_length
+    # def edit_inside_shape_height(self):
+    #     inside_length = tkinter.simpledialog.askfloat("Edit Inside Shape Length", "Enter New Insidem Length:")
+    #     return inside_length
+    # def edit_inside_shape_line_color(self):
+    #     inside_line_color = tkinter.simpledialog.askstring("Edit Inside Line Color", "Enter New Inside Line Color:")
+    #     return inside_line_color
+    # def edit_inside_shape_fill_color(self):
+    #     inside_fill_color = tkinter.simpledialog.askstring("Edit Inside Fill Color", "Enter New Inside Fill Color:")
+    #     return inside_fill_color
 
-    # Pickle File Editing
-    def edit_pickle_outside_shape_radius(self):
-        pass
-    def edit_pickle_outside_shape_line_color(self):
-        pass
-    def edit_pickle_outside_shape_fill_color(self):
-        pass
-    def edit_pickle_inside_shape_length(self):
-        pass
-    def edit_pickle_inside_shape_line_color(self):
-        pass
-    def edit_pickle_inside_shape_fill_color(self):
-        pass
+    # # Pickle File Editing
+    # def edit_pickle_outside_shape_radius(self):
+    #     outside_radius = tkinter.simpledialog.askfloat("Edit Outside Radius", "Enter New Outside Radius:")
+    #     return outside_radius
+    # def edit_pickle_outside_shape_line_color(self):
+    #     outside_line_color = tkinter.simpledialog.askstring("Edit Outside Line Color","Enter New Outside Line Color:")
+    #     return outside_line_color
+    # def edit_pickle_outside_shape_fill_color(self):
+    #     outside_fill_color = tkinter.simpledialog.askstring("Edit Outside Fill Color", "Enter New Outside Fill Color")
+    #     return outside_fill_color
+    # def edit_pickle_inside_shape_length(self):
+    #     inside_length = tkinter.simpledialog.askfloat("Edit Inside Shape Length", "Enter New Inside Length:")
+    #     return inside_length
+    # def edit_pickle_inside_shape_height(self):
+    #     inside_height = tkinter.simpledialog.askfloat("Edit Inside Shape Height", "Enter New Inside Height:")
+    #     return inside_height
+    # def edit_pickle_inside_shape_line_color(self):
+    #     inside_line_color = tkinter.simpledialog.askstring("Edit Inside Line Color", "Enter New Inside Line Color:")
+    #     return inside_line_color
+    # def edit_pickle_inside_shape_fill_color(self):
+    #     inside_fill_color = tkinter.simpledialog.askstring("Edit Inside Fill Color", "Enter New Inside Fill Color:")
+    #     return inside_fill_color

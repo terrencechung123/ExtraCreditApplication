@@ -14,6 +14,6 @@ def application():
     outside_model = Outside_Geometric_Shape(1.0, "black", "red")
     inside_model = Inside_Geometric_Shape(1.0, 2.0, "black", "red")
     view = ApplicationView()
-    controller = KineticEnergyCalculatorController(outside_model, inside_model, view)
+    controller = ApplicationController(outside_model, inside_model, view)
 
 application()
