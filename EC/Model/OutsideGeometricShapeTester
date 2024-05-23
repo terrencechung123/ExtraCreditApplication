@@ -1,0 +1,25 @@
+# PROGRAMMER: Khiem Nguyen, Richie Nguyen, Terrence Chung
+
+# IMPORT STATEMENTS
+from OutsideGeometricShape import OutsideGeometricShape
+
+# FUNCTIONS
+def setUp():
+    shape = OutsideGeometricShape(10, "red", "blue")
+
+    print(shape.get_radius(), "should be", 10)
+    print(shape.get_line_color(), "should be", "red")
+    print(shape.get_fill_color(), "should be", "blue")
+
+    shape.set_radius(15)
+    print(shape.get_radius(), "should be", 15)
+
+    shape.set_line_color("green")
+    print(shape.get_line_color(), "should be", "green")
+
+    shape.set_fill_color("yellow")
+    print(shape.get_fill_color(), "should be", "yellow")
+
+    print(shape.area(), "should be", 706.9)
+
+    print(shape.perimeter(), "should be", 94.25)

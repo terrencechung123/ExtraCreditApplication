@@ -1,4 +1,4 @@
-# PROGRAMMER: Terrence Chung
+# PROGRAMMER: Khiem Nguyen, Richie Nguyen, Terrence Chung
 
 # IMPORT STATEMENTS
 

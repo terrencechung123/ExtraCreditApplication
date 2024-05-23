@@ -1,4 +1,4 @@
-# PROGRAMMER
+# PROGRAMMER: Khiem Nguyen, Richie Nguyen, Terrence Chung
 
 # IMPORT STATEMENTS
 import tkinter
@@ -18,18 +18,7 @@ class ApplicationView:
         self.__application_frame.pack()
         self.__canvas = tkinter.Canvas(self.__application_frame, bg = "green", width = 800, height = 600)
         self.__canvas.pack()
-    """
-    Application Frame will contain a Canvas
-    Outside Geometric Shape graphic will be centered in the Canvas
-    Inside Geometric Shape graphic will be centered in the Canvas
-    All File Menu selections will display an appropriate Tkinter Popup
-    All Edit Menu selections will display an appropriate Tkinter Popup
-    All View Menu selections will display an appropriate Tkinter Popup
-    The Help Menu selections will display an appropriate Tkinter Popup
-    All Exception messages will be displayed using an appropriate Tkinter Popup
-    Canvas graphics will update every time that an Outside Geometric Shape value is modified
-    Canvas graphics will update every time that an Inside Geometric Shape value is modified
-    """
+        
     # INSTANCE METHODS
     def start(self):
         self.__application_window.mainloop()
