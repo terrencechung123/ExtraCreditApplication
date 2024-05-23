@@ -68,10 +68,17 @@ class ApplicationController():
     # INSTANCE METHODS
 
     def view_outside_shape(self):
-        self.__view.show_outside_shape()
+        radius = self.__model_outside.get_radius()
+        line_color = self.__model_outside.get_line_color()
+        fill_color = self.__model_outside.get_fill_color()
+        self.__view.show_outside_shape(radius, line_color, fill_color)
 
     def view_inside_shape(self):
-        self.__view.show_inside_shape()
+        length = self.__model_inside.get_length()
+        height = self.__model_inside.get_height()
+        line_color = self.__model_inside.get_line_color()
+        fill_color = self.__model_inside.get_fill_color()
+        self.__view.show_inside_shape(length, height, line_color, fill_color)
 
     def file_new(self):
 
