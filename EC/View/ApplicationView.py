@@ -16,8 +16,8 @@ class ApplicationView:
 
         self.__application_frame = tkinter.ttk.Frame(self.__application_window)
         self.__application_frame.pack()
-        self.__Canvas = tkinter.Canvas(self.__application_frame, bg = "green", width = 800, height = 600)
-        self.__Canvas.pack()
+        self.__canvas = tkinter.Canvas(self.__application_frame, bg = "green", width = 800, height = 600)
+        self.__canvas.pack()
     """
     Application Frame will contain a Canvas
     Outside Geometric Shape graphic will be centered in the Canvas
@@ -38,16 +38,16 @@ class ApplicationView:
 
     def show_outside_shape(self, radius, line_color, fill_color):
     # Clear canvas first
-        self.__Canvas.delete("all")
+        self.__canvas.delete("all")
         # Draw outside shape, for example, a circle
-        self.__Canvas.create_oval((400 - radius / 2, 300 - radius / 2), (400 + radius / 2, 300 + radius / 2), outline= line_color, fill= fill_color)
+        self.__canvas.create_oval((400 - radius / 2, 300 - radius / 2), (400 + radius / 2, 300 + radius / 2), outline= line_color, fill= fill_color)
         # Other drawing operations as needed
 
     def show_inside_shape(self, length, height, line_color, fill_color):
         # Clear canvas first
-        self.__Canvas.delete("all")
+        self.__canvas.delete("all")
         # Draw inside shape, for example, a rectangle
-        self.__Canvas.create_rectangle((400 - length / 2, 300 - height / 2), (400 + length / 2, 300 + length / 2), outline=line_color, fill=fill_color)
+        self.__canvas.create_rectangle((400 - length / 2, 300 - height / 2), (400 + length / 2, 300 + length / 2), outline=line_color, fill=fill_color)
         # Other drawing operations as needed
 
     def get_about(self):

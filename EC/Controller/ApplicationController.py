@@ -5,6 +5,8 @@ import tkinter
 import pickle
 import tkinter.filedialog
 import tkinter.messagebox
+import json
+import xml.etree.ElementTree as ET
 
 class ApplicationController():
     # CONSTRUCTOR
@@ -21,17 +23,15 @@ class ApplicationController():
         self.__model_outside = model_outside
         self.__model_inside = model_inside
         self.__view = view
-        # self.__application_window.title("Application")
-        # self.__application_window.geometry("1000x500")
 
         self.__application_menu = tkinter.Menu(self.__view.application_window())
 
         # File menu
         self.__file_menu = tkinter.Menu(self.__application_menu)
-        self.__file_menu.add_command(label="New")
-        self.__file_menu.add_command(label="Open")
-        self.__file_menu.add_command(label="Save as XML")
-        self.__file_menu.add_command(label="Save as JSON")
+        self.__file_menu.add_command(label="New", command=self.file_new)
+        self.__file_menu.add_command(label="Open", command=self.file_open)
+        self.__file_menu.add_command(label="Save as XML", command=self.file_save_xml)
+        self.__file_menu.add_command(label="Save as JSON", command=self.file_save_json)
         self.__application_menu.add_cascade(label="File", menu=self.__file_menu)
 
         # Edit Menu
@@ -62,10 +62,8 @@ class ApplicationController():
         self.__help_menu = tkinter.Menu(self.__application_menu)
         self.__help_menu.add_command(label="About", command=self.__view.get_about)
         self.__application_menu.add_cascade(label="Help", menu=self.__help_menu)
-        self.view_inside_shape()
-        self.view_outside_shape()
         self.__view.application_window()["menu"] = self.__application_menu
-        # self.__application_window.mainloop()
+        self.__view.application_window().mainloop()
 
     # INSTANCE METHODS
     def view_outside_shape(self):
@@ -104,16 +102,48 @@ class ApplicationController():
                 tkinter.messagebox.showinfo("File Opened", f"Data: {data}")
 
     def file_save_xml(self):
-        file_path = tkinter.filedialog.asksaveasfilename(defaultextension=".xml", filetypes=[("XML files", "*.xml")])
-        if file_path:
-            # Save logic for XML
-            tkinter.messagebox.showinfo("Save as XML", f"Saved to {file_path}")
+        
+        parent_root = ET.Element("ApplicationData")
+
+        root1 = ET.SubElement(parent_root, "Circle")
+        var1_element = ET.SubElement(root1, "Radius")
+        var1_element.text = str(self.__model_outside.get_radius())
+        var2_element = ET.SubElement(root1, "LineColor")
+        var2_element.text = self.__model_outside.get_line_color()
+        var3_element = ET.SubElement(root1, "FillColor")
+        var3_element.text = self.__model_outside.get_fill_color()
+
+        root2 = ET.SubElement(parent_root, "Rectangle")
+        var1_element = ET.SubElement(root2, "Length")
+        var1_element.text = str(self.__model_inside.get_length())
+        var2_element = ET.SubElement(root2, "Height")
+        var2_element.text = str(self.__model_inside.get_height())
+        var3_element = ET.SubElement(root2, "LineColor")
+        var3_element.text = self.__model_inside.get_line_color()
+        var4_element = ET.SubElement(root2, "FillColor")
+        var4_element.text = self.__model_inside.get_fill_color()
+
+        tree = ET.ElementTree(parent_root)
+        tree.write("ApplicationData.xml", encoding='utf-8', xml_declaration=True)
 
     def file_save_json(self):
-        file_path = tkinter.filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
-        if file_path:
-            # Save logic for JSON
-            tkinter.messagebox.showinfo("Save as JSON", f"Saved to {file_path}")
+        json_values = { 
+            "outside_shape" : {},
+            "inside_shape" : {}
+        }
+        
+        json_values["outside_shape"]["radius"] = self.__model_outside.get_radius()
+        json_values["outside_shape"]["line_color"] = self.__model_outside.get_line_color()
+        json_values["outside_shape"]["fill_color"] = self.__model_outside.get_fill_color()
+        
+        json_values["inside_shape"]["length"] = self.__model_inside.get_length()
+        json_values["inside_shape"]["height"] = self.__model_inside.get_height()
+        json_values["inside_shape"]["line_color"] = self.__model_inside.get_line_color()
+        json_values["inside_shape"]["fill_color"] = self.__model_inside.get_fill_color()
+        
+        save_file = open("ApplicationData.json", "w")
+        json.dump(json_values, save_file, indent = 6)
+        save_file.close()
 
     def edit_outside_shape_radius(self):
         outside_radius = tkinter.simpledialog.askfloat("Edit Outside Radius", "Enter New Outside Radius:")

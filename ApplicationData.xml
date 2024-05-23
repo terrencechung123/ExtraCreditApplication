@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ApplicationData><Circle><Radius>100</Radius><LineColor>black</LineColor><FillColor>red</FillColor></Circle><Rectangle><Length>100</Length><Height>200</Height><LineColor>black</LineColor><FillColor>red</FillColor></Rectangle></ApplicationData>
