@@ -87,14 +87,7 @@ class ApplicationController():
         with open("InsideShape.pickle", "wb") as binary_file_input:
             pickle.dump(rectangle_settings, binary_file_input)
 
-    # def file_open(self):
-    #     pass
-
-    # def file_save_xml(self):
-    #     pass
-
-    # def file_save_json(self):
-    #     pass
+   
     def file_open(self):
         file_path = filedialog.askopenfilename(filetypes=[("Pickle files", "*.pickle")])
         if file_path:
