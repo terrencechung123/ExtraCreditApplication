@@ -1,5 +1,3 @@
-'''Rectangle Inscribed inside of Circle'''
-
 # PROGRAMMER: Khiem Nguyen, Richie Nguyen, Terrence Chung
 
 # IMPORT STATEMENTS

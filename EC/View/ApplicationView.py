@@ -18,7 +18,7 @@ class ApplicationView:
         self.__application_frame.pack()
         self.__canvas = tkinter.Canvas(self.__application_frame, bg = "green", width = 800, height = 600)
         self.__canvas.pack()
-        
+
     # INSTANCE METHODS
     def start(self):
         self.__application_window.mainloop()
@@ -26,7 +26,7 @@ class ApplicationView:
         return self.__application_window
 
     def show_outside_shape(self, radius, line_color, fill_color):
-    # Clear canvas first
+        # Clear canvas first
         self.__canvas.delete("all")
         # Draw outside shape, for example, a circle
         self.__canvas.create_oval((400 - radius / 2, 300 - radius / 2), (400 + radius / 2, 300 + radius / 2), outline= line_color, fill= fill_color)
