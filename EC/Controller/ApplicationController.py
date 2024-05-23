@@ -3,16 +3,18 @@
 # IMPORT STATEMENTS
 import tkinter
 import pickle
+import tkinter.filedialog
+import tkinter.messagebox
 
 class ApplicationController():
     # CONSTRUCTOR
     def __init__(self, model_outside, model_inside, view):
-        self.__default_circle_radius = 1.0
+        self.__default_circle_radius = 100
         self.__default_circle_line_color = "black"
         self.__default_circle_fill_color = "red"
 
-        self.__default_rectangle_length = 1.0
-        self.__default_rectangle_height = 2.0
+        self.__default_rectangle_length = 100
+        self.__default_rectangle_height = 200
         self.__default_rectangle_line_color = "black"
         self.__default_rectangle_fill_color = "red"
 
@@ -58,7 +60,7 @@ class ApplicationController():
 
         # Help Menu
         self.__help_menu = tkinter.Menu(self.__application_menu)
-        self.__help_menu.add_command(label="About")
+        self.__help_menu.add_command(label="About", command=self.__view.get_about)
         self.__application_menu.add_cascade(label="Help", menu=self.__help_menu)
         self.view_inside_shape()
         self.view_outside_shape()
@@ -66,7 +68,6 @@ class ApplicationController():
         # self.__application_window.mainloop()
 
     # INSTANCE METHODS
-
     def view_outside_shape(self):
         radius = self.__model_outside.get_radius()
         line_color = self.__model_outside.get_line_color()
@@ -96,38 +97,23 @@ class ApplicationController():
 
    
     def file_open(self):
-        file_path = filedialog.askopenfilename(filetypes=[("Pickle files", "*.pickle")])
+        file_path = tkinter.filedialog.askopenfilename(filetypes=[("Pickle files", "*.pickle")])
         if file_path:
             with open(file_path, "rb") as binary_file_input:
                 data = pickle.load(binary_file_input)
-                messagebox.showinfo("File Opened", f"Data: {data}")
+                tkinter.messagebox.showinfo("File Opened", f"Data: {data}")
 
     def file_save_xml(self):
-        file_path = filedialog.asksaveasfilename(defaultextension=".xml", filetypes=[("XML files", "*.xml")])
+        file_path = tkinter.filedialog.asksaveasfilename(defaultextension=".xml", filetypes=[("XML files", "*.xml")])
         if file_path:
             # Save logic for XML
-            messagebox.showinfo("Save as XML", f"Saved to {file_path}")
+            tkinter.messagebox.showinfo("Save as XML", f"Saved to {file_path}")
 
     def file_save_json(self):
-        file_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
+        file_path = tkinter.filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
         if file_path:
             # Save logic for JSON
-            messagebox.showinfo("Save as JSON", f"Saved to {file_path}")
-
-
-    # def view_outside_shape(self):
-    #     self.__temp_application_window = tkinter.Tk()
-    #     self.__temp_application_window.title("Outside Shape")
-    #     self.__temp_application_window.geometry("800x500")
-
-    #     self.__temp_application_window.mainloop()
-
-    # def view_inside_shape(self):
-    #     self.__temp_application_window = tkinter.Tk()
-    #     self.__temp_application_window.title("Inside Shape")
-    #     self.__temp_application_window.geometry("800x500")
-
-    #     self.__temp_application_window.mainloop()
+            tkinter.messagebox.showinfo("Save as JSON", f"Saved to {file_path}")
 
     def edit_outside_shape_radius(self):
         outside_radius = tkinter.simpledialog.askfloat("Edit Outside Radius", "Enter New Outside Radius:")
@@ -135,7 +121,6 @@ class ApplicationController():
     def edit_outside_shape_line_color(self):
         outside_line_color = tkinter.simpledialog.askstring("Edit Outside Line Color","Enter New Outside Line Color:")
         self.__model_outside.set_line_color(outside_line_color)
-        return outside_line_color
     def edit_outside_shape_fill_color(self):
         outside_fill_color = tkinter.simpledialog.askstring("Edit Outside Fill Color", "Enter New Outside Fill Color")
         self.__model_outside.set_fill_color(outside_fill_color)
@@ -155,26 +140,37 @@ class ApplicationController():
     # Pickle File Editing
     def edit_pickle_outside_shape_radius(self):
         outside_radius = tkinter.simpledialog.askfloat("Edit Outside Radius", "Enter New Outside Radius:")
+        self.__default_circle_radius = outside_radius
+        self.file_new()
         
     def edit_pickle_outside_shape_line_color(self):
         outside_line_color = tkinter.simpledialog.askstring("Edit Outside Line Color","Enter New Outside Line Color:")
         self.__default_circle_line_color = outside_line_color
+        self.file_new()
+
     def edit_pickle_outside_shape_fill_color(self):
         outside_fill_color = tkinter.simpledialog.askstring("Edit Outside Fill Color", "Enter New Outside Fill Color")
-        return outside_fill_color
+        self.__default_circle_fill_color = outside_fill_color
+        self.file_new()
+
     def edit_pickle_inside_shape_length(self):
         inside_length = tkinter.simpledialog.askfloat("Edit Inside Shape Length", "Enter New Inside Length:")
-        return inside_length
+        self.__default_rectangle_length = inside_length
+        self.file_new()
+        
     def edit_pickle_inside_shape_height(self):
         inside_height = tkinter.simpledialog.askfloat("Edit Inside Shape Height", "Enter New Inside Height:")
-        return inside_height
+        self.__default_rectangle_height = inside_height
+        self.file_new()
+
     def edit_pickle_inside_shape_line_color(self):
         inside_line_color = tkinter.simpledialog.askstring("Edit Inside Line Color", "Enter New Inside Line Color:")
-        return inside_line_color
+        self.__default_rectangle_line_color = inside_line_color
+        self.file_new()
+
     def edit_pickle_inside_shape_fill_color(self):
         inside_fill_color = tkinter.simpledialog.askstring("Edit Inside Fill Color", "Enter New Inside Fill Color:")
-        return inside_fill_color
-
-
-
-# ApplicationController("d", "e", "c")
+        self.__default_rectangle_fill_color = inside_fill_color
+        self.file_new()
+        
+        

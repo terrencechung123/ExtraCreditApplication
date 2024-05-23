@@ -11,8 +11,8 @@ from View.ApplicationView import ApplicationView
 # FUNCTIONS
 
 def application():
-    outside_model = OutsideGeometricShape(1.0, "black", "red")
-    inside_model = InsideGeometricShape(1.0, 2.0, "black", "red")
+    outside_model = OutsideGeometricShape(100, "black", "red")
+    inside_model = InsideGeometricShape(100, 200, "black", "red")
     view = ApplicationView()
     controller = ApplicationController(outside_model, inside_model, view)
     view.start()

@@ -49,3 +49,7 @@ class ApplicationView:
         # Draw inside shape, for example, a rectangle
         self.__Canvas.create_rectangle((400 - length / 2, 300 - height / 2), (400 + length / 2, 300 + length / 2), outline=line_color, fill=fill_color)
         # Other drawing operations as needed
+
+    def get_about(self):
+        tkinter.messagebox.showinfo("Application Extra Credit", "Spring Semester 2024")
+        self.__application_window.update()
