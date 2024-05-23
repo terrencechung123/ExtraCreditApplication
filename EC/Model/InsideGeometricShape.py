@@ -2,7 +2,7 @@
 
 # IMPORT STATEMENTS
 
-class InsideGeometricShape(): #Rectangle
+class InsideGeometricShape: #Rectangle
 
     # CONSTRUCTOR
     def __init__(self, length, height, line_color, fill_color):

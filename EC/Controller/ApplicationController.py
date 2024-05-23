@@ -19,12 +19,10 @@ class ApplicationController():
         self.__model_outside = model_outside
         self.__model_inside = model_inside
         self.__view = view
+        # self.__application_window.title("Application")
+        # self.__application_window.geometry("1000x500")
 
-        self.__application_window = tkinter.Tk()
-        self.__application_window.title("Application")
-        self.__application_window.geometry("1000x500")
-
-        self.__application_menu = tkinter.Menu(self.__application_window)
+        self.__application_menu = tkinter.Menu(self.__view.application_window())
 
         # File menu
         self.__file_menu = tkinter.Menu(self.__application_menu)
@@ -62,11 +60,19 @@ class ApplicationController():
         self.__help_menu = tkinter.Menu(self.__application_menu)
         self.__help_menu.add_command(label="About")
         self.__application_menu.add_cascade(label="Help", menu=self.__help_menu)
-
-        self.__application_window["menu"] = self.__application_menu
-        self.__application_window.mainloop()
+        self.view_inside_shape()
+        self.view_outside_shape()
+        self.__view.application_window()["menu"] = self.__application_menu
+        # self.__application_window.mainloop()
 
     # INSTANCE METHODS
+
+    def view_outside_shape(self):
+        self.__view.show_outside_shape()
+
+    def view_inside_shape(self):
+        self.__view.show_inside_shape()
+
     def file_new(self):
 
         # Initialize default values for pickle file for outside shape (circle)
@@ -81,28 +87,47 @@ class ApplicationController():
         with open("InsideShape.pickle", "wb") as binary_file_input:
             pickle.dump(rectangle_settings, binary_file_input)
 
+    # def file_open(self):
+    #     pass
+
+    # def file_save_xml(self):
+    #     pass
+
+    # def file_save_json(self):
+    #     pass
     def file_open(self):
-        pass
+        file_path = filedialog.askopenfilename(filetypes=[("Pickle files", "*.pickle")])
+        if file_path:
+            with open(file_path, "rb") as binary_file_input:
+                data = pickle.load(binary_file_input)
+                messagebox.showinfo("File Opened", f"Data: {data}")
 
     def file_save_xml(self):
-        pass
+        file_path = filedialog.asksaveasfilename(defaultextension=".xml", filetypes=[("XML files", "*.xml")])
+        if file_path:
+            # Save logic for XML
+            messagebox.showinfo("Save as XML", f"Saved to {file_path}")
 
     def file_save_json(self):
-        pass
+        file_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
+        if file_path:
+            # Save logic for JSON
+            messagebox.showinfo("Save as JSON", f"Saved to {file_path}")
 
-    def view_outside_shape(self):
-        self.__temp_application_window = tkinter.Tk()
-        self.__temp_application_window.title("Outside Shape")
-        self.__temp_application_window.geometry("800x500")
 
-        self.__temp_application_window.mainloop()
+    # def view_outside_shape(self):
+    #     self.__temp_application_window = tkinter.Tk()
+    #     self.__temp_application_window.title("Outside Shape")
+    #     self.__temp_application_window.geometry("800x500")
 
-    def view_inside_shape(self):
-        self.__temp_application_window = tkinter.Tk()
-        self.__temp_application_window.title("Inside Shape")
-        self.__temp_application_window.geometry("800x500")
+    #     self.__temp_application_window.mainloop()
 
-        self.__temp_application_window.mainloop()
+    # def view_inside_shape(self):
+    #     self.__temp_application_window = tkinter.Tk()
+    #     self.__temp_application_window.title("Inside Shape")
+    #     self.__temp_application_window.geometry("800x500")
+
+    #     self.__temp_application_window.mainloop()
 
     def edit_outside_shape_radius(self):
         outside_radius = tkinter.simpledialog.askfloat("Edit Outside Radius", "Enter New Outside Radius:")
@@ -127,29 +152,29 @@ class ApplicationController():
         inside_fill_color = tkinter.simpledialog.askstring("Edit Inside Fill Color", "Enter New Inside Fill Color:")
         self.__model_inside.set_fill_color(inside_fill_color)
 
-    # # Pickle File Editing
-    # def edit_pickle_outside_shape_radius(self):
-    #     outside_radius = tkinter.simpledialog.askfloat("Edit Outside Radius", "Enter New Outside Radius:")
+    # Pickle File Editing
+    def edit_pickle_outside_shape_radius(self):
+        outside_radius = tkinter.simpledialog.askfloat("Edit Outside Radius", "Enter New Outside Radius:")
         
-    # def edit_pickle_outside_shape_line_color(self):
-    #     outside_line_color = tkinter.simpledialog.askstring("Edit Outside Line Color","Enter New Outside Line Color:")
-    #     self.__default_circle_line_color = outside_line_color
-    # def edit_pickle_outside_shape_fill_color(self):
-    #     outside_fill_color = tkinter.simpledialog.askstring("Edit Outside Fill Color", "Enter New Outside Fill Color")
-    #      outside_fill_color
-    # def edit_pickle_inside_shape_length(self):
-    #     inside_length = tkinter.simpledialog.askfloat("Edit Inside Shape Length", "Enter New Inside Length:")
-    #     return inside_length
-    # def edit_pickle_inside_shape_height(self):
-    #     inside_height = tkinter.simpledialog.askfloat("Edit Inside Shape Height", "Enter New Inside Height:")
-    #     return inside_height
-    # def edit_pickle_inside_shape_line_color(self):
-    #     inside_line_color = tkinter.simpledialog.askstring("Edit Inside Line Color", "Enter New Inside Line Color:")
-    #     return inside_line_color
-    # def edit_pickle_inside_shape_fill_color(self):
-    #     inside_fill_color = tkinter.simpledialog.askstring("Edit Inside Fill Color", "Enter New Inside Fill Color:")
-    #     return inside_fill_color
+    def edit_pickle_outside_shape_line_color(self):
+        outside_line_color = tkinter.simpledialog.askstring("Edit Outside Line Color","Enter New Outside Line Color:")
+        self.__default_circle_line_color = outside_line_color
+    def edit_pickle_outside_shape_fill_color(self):
+        outside_fill_color = tkinter.simpledialog.askstring("Edit Outside Fill Color", "Enter New Outside Fill Color")
+        return outside_fill_color
+    def edit_pickle_inside_shape_length(self):
+        inside_length = tkinter.simpledialog.askfloat("Edit Inside Shape Length", "Enter New Inside Length:")
+        return inside_length
+    def edit_pickle_inside_shape_height(self):
+        inside_height = tkinter.simpledialog.askfloat("Edit Inside Shape Height", "Enter New Inside Height:")
+        return inside_height
+    def edit_pickle_inside_shape_line_color(self):
+        inside_line_color = tkinter.simpledialog.askstring("Edit Inside Line Color", "Enter New Inside Line Color:")
+        return inside_line_color
+    def edit_pickle_inside_shape_fill_color(self):
+        inside_fill_color = tkinter.simpledialog.askstring("Edit Inside Fill Color", "Enter New Inside Fill Color:")
+        return inside_fill_color
 
 
 
-ApplicationController("d", "e", "c")
+# ApplicationController("d", "e", "c")

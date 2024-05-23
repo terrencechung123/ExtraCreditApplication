@@ -2,7 +2,7 @@
 
 # IMPORT STATEMENTS
 
-class OutsideGeometricShape():
+class OutsideGeometricShape:
 
     # CONSTRUCTOR
     def __init__(self, radius, line_color, fill_color):
@@ -11,7 +11,6 @@ class OutsideGeometricShape():
             raise TypeError("Outside_Geometric_Shape.py __init__ radius - radius must be a valid integer or float.")
         if radius <= 0:
             raise ValueError("Outside_Geometric_Shape.py __init__ radius - radius must be greater than zero.")
-
         valid_colors = ("red", "white", "blue", "orange", "white", "black", "green", "yellow", "purple")
         # LINE_COLOR EXCEPTIONS
         if type(line_color) is not str:
